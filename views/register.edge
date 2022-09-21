@@ -1,0 +1,49 @@
+@layout("layouts.app");
+
+@section('content')
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/assets/img/register.jpg')">
+  <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-md-10 col-lg-8 col-xl-7">
+              <div class="page-heading">
+                  <h1>Register</h1>
+                  <span class="subheading">After register you can create any post...</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      @if(errors.length > 0)
+        @each(err in errors)
+          <div class="alert alert-danger rounded" role="alert">
+            Xatolik Bor!
+          </div>
+        @endeach
+      @endif
+      <form action="/auth/reg" method="POST">
+        <div class="form-floating">
+          <input type="text" class="form-control" name="username" value="{{data.username || ""}}" placeholder="Enter Your Username">
+          <label>Username</label>
+        </div>
+        <div class="form-floating">
+          <input type="email" class="form-control" name="email" value="{{data.email || ""}}" placeholder="Enter Your Email">
+          <label>Email</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" name="password"   value="{{data.password || "" }}"placeholder="password">
+          <label>Password</label>
+        </div>
+        <div class="form-group text-center my-4">
+          <button class="btn btn-primary" type="submit">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+@endsection

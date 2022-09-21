@@ -1,0 +1,52 @@
+@layout('layouts.app')
+
+@section('content')
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('/assets/img/profile.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading d-flex flex-column align-items-center">
+                    <h1 class="text-center fs-1" >{{user.username}}</h1>
+                    <span class="subheading">{{user.email}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-9">
+            @if(post.length > 0)
+                <div class="alert  alert-info rounded text-center fs-3 font-weight-bold" role="alert">
+                    {{user.username}}'ning barcha qo'ygan posti!
+                </div>
+                @each(item in post)              
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href={{'/post/'+ item._id}}>
+                            <h2 class="post-title">{{item.title}}</h2>
+                            <h3 class="post-subtitle">{{item.description}}</h3>
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="/profile/{{item.author}}">{{user.username}}</a>
+                            on {{item.createdAt.toDateString()}}
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                @endeach
+            @else
+            <div class="alert  alert-info rounded text-center fs-3 font-weight-bold" role="alert">
+                {{user.username}}'ning profilda post yo'q!
+            </div>
+            <div class="d-flex justify-content-center mb-4 my-3"><a class="rounded btn btn-danger text-uppercase" href="/posts/new">Create New Post →</a></div>
+
+            @endif
+            
+        </div>
+    </div>
+</div>
+@endsection

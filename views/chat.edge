@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Blog - CHAT</title>
+    <link rel="icon" href="/assets/favicon.png">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section class="chat__section">
+        <div class="brand">
+            <img height="40" src="/assets/favicon.png" alt="">
+            <h1><a style="text-decoration: none; color:black;" href="/">Node Blog <i style="font-size:12px; color:white; font-weight: 700; background-color: red; padding: 2px; position:relative; top:-10px; border-radius:2px;">beta</i></a> - CHAT by <h1 id="username"><a style="text-decoration: none;color:blueviolet;" href="/profile/{{user._id}}">{{user.username}}</a></h1></h1>
+        </div>
+        <div class="message__area"></div>
+        <div class="con">
+            <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..."></textarea>
+            <button id="btn-send">Send</button>
+            <audio autoplay>
+                <source src="/free-ringtones-for-android-samsung-4609-40939.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js"></script>
+</body>
+</html>

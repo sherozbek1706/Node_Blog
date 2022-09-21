@@ -1,0 +1,25 @@
+const mongoose = require("mongoose");
+const Post = require("./models/Post");
+
+mongoose.connect(
+  "mongodb+srv://sherozbek:Matematika3sinf@cluster0.ymqgrib.mongodb.net/node-blog-test"
+);
+
+// Post.find({ title: "My Second Blog!" }, (err, post) => {
+//   console.log(post);
+// });
+
+Post.findById("6300c4de47e55ad685625d79", (err, post) => {
+  console.log(post);
+});
+
+Post.findByIdAndUpdate("6300c4de47e55ad685625d79", {
+  title:"Blog Mongo DB Project"
+}, (err, post) => {
+  console.log(post);
+});
+// Post.create({
+//   title: "My Second Blog!",
+//   description: "O'zbekiston Gulzor , tuproqlari lolazor",
+//   content:"GERB , BAYROQ , MADHIYA , KONSTITUTSIYA"
+// } , (err , post) => {console.log(err , post);})
